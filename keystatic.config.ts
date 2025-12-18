@@ -3,7 +3,8 @@ import { config, fields, collection, singleton } from '@keystatic/core';
 
 export default config({
   storage: {
-    kind: 'local',
+    kind: 'github',
+    repo: 'https://github.com/pasalomocoPacheta/testingporfavor', // <--- CAMBIA ESTO POR TU REPO REAL
   },
   singletons: {
     settings: singleton({
