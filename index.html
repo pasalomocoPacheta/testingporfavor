@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beluga Linguistics | Links</title>
+    <!-- Tailwind CSS CDN - Ideal para HubSpot para evitar subir archivos CSS extra -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Belfast Grotesk"', 'sans-serif'],
+              display: ['"TTRamillas"', 'serif'],
+            },
+            animation: {
+              'pulse-slow': 'pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* 
+       * INSTRUCCIONES PARA HUBSPOT:
+       * 1. Sube tus archivos de fuente (.woff2) al "File Manager" (Gestor de Archivos) de HubSpot.
+       * 2. Copia la URL que HubSpot te da para cada archivo.
+       * 3. Reemplaza las rutas dentro de url("...") con las URLs completas de HubSpot.
+       */
+
+      /* TTRamillas */
+      @font-face {
+        font-family: 'TTRamillas';
+        src: url("fonts/tt-ramillas/tt-ramillas-black.woff2") format('woff2');
+        font-weight: 900;
+        font-style: normal;
+      }
+
+      /* Belfast Grotesk */
+      @font-face {
+        font-family: 'Belfast Grotesk';
+        src: url("fonts/belfast-grotesk/belfast-grotesk-regular.woff2") format('woff2');
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Belfast Grotesk';
+        src: url("fonts/belfast-grotesk/belfast-grotesk-bold.woff2") format('woff2');
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      body {
+        font-family: 'Belfast Grotesk', sans-serif;
+        cursor: none; /* Hide default cursor for the custom one */
+      }
+      
+      /* Fallback for touch devices */
+      @media (hover: none) and (pointer: coarse) {
+        body {
+          cursor: auto;
+        }
+        .custom-cursor {
+          display: none !important;
+        }
+      }
+
+      /* Premium Noise Texture */
+      .bg-noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* --- INTRO ANIMATIONS --- */
+
+      /* Phase 1: Enter */
+      @keyframes belugaSwimIn {
+        0% { transform: translateX(-150vw) rotate(-5deg); }
+        100% { transform: translateX(-22%) rotate(0deg); } 
+      }
+
+      /* Phase 2: Anticipate (Open Mouth & Pull Back) */
+      @keyframes belugaAnticipate {
+        0% { transform: translateX(-22%); }
+        100% { transform: translateX(-30%) rotate(-5deg) scale(0.95); } /* Pull back further */
+      }
+
+      /* Phase 3: Bite (Lunge Forward) */
+      /* Adjusted to stop AT the letter, not pass over it */
+      @keyframes belugaBite {
+        0% { transform: translateX(-30%) rotate(-5deg) scale(0.95); }
+        50% { transform: translateX(-5%) rotate(0deg) scale(1.05); } /* Rapid lunge to target */
+        100% { transform: translateX(-5%) rotate(0deg) scale(1); } /* Hold position while chewing */
+      }
+
+      /* Phase 4: Chew (Subtle body bounce) */
+      @keyframes belugaChewBody {
+        0%, 100% { transform: translateX(-5%) translateY(0); }
+        25% { transform: translateX(-5%) translateY(2px) rotate(1deg); }
+        75% { transform: translateX(-5%) translateY(-2px) rotate(-1deg); }
+      }
+
+      /* Phase 5: Look (Float) */
+      @keyframes belugaFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      /* Blink */
+      @keyframes eyeBlink {
+        0%, 45%, 55%, 100% { transform: scaleY(1); }
+        50% { transform: scaleY(0.1); }
+      }
+
+      /* Phase 6: Exit (Dash) */
+      @keyframes belugaDashOut {
+        0% { transform: translateX(0) scaleX(1); opacity: 1; }
+        10% { transform: translateX(-5%) scaleX(-1); opacity: 1; } /* Turn */
+        100% { transform: translateX(-150vw) scaleX(-1); opacity: 1; }
+      }
+
+      /* Target 'A' interactions - Realistic Vacuum Suction */
+      @keyframes targetSuckedIn {
+        0% { opacity: 1; transform: scale(1) translateX(0); }
+        
+        /* Step 1: Fear/Wobble */
+        15% { transform: scale(0.95) translateX(-10px) rotate(-5deg); } 
+        
+        /* Step 2: Extreme Stretch into mouth (Spaghettification) */
+        /* It stretches horizontally towards the whale and shrinks vertically */
+        40% { 
+            opacity: 1; 
+            transform: scale(1.5, 0.4) translateX(80px) rotate(0deg); 
+            filter: blur(2px);
+        }
+        
+        /* Step 3: Disappear into the "throat" */
+        50% { 
+            opacity: 0; 
+            transform: scale(0.1) translateX(150px); 
+        }
+        100% { opacity: 0; transform: scale(0); }
+      }
+      
+      /* Crumbs/Confetti Explosion - Updated for tumbling physics */
+      @keyframes crumbBlast {
+        0% { transform: translate(0, 0) scale(0) rotate(0deg); opacity: 0; }
+        10% { transform: translate(0, 0) scale(1) rotate(20deg); opacity: 1; }
+        100% { transform: translate(var(--tx), var(--ty)) scale(0) rotate(var(--rot)); opacity: 0; }
+      }
+
+      /* Final Logo Burst */
+      @keyframes logoBurst {
+        0% { opacity: 0; transform: scale(0.8); filter: blur(5px); }
+        100% { opacity: 1; transform: scale(1); filter: blur(0); }
+      }
+      
+      /* Slow Pulse for Background */
+      @keyframes pulse-slow {
+        0%, 100% { opacity: 0.2; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(1.1); }
+      }
+
+      /* Existing Animations */
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(40px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      
+      @keyframes popIn {
+        0% { transform: scale(0); opacity: 0; }
+        80% { transform: scale(1.1); opacity: 1; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+
+      @keyframes gradientBorder {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      .animate-slide-up {
+        opacity: 0;
+        animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      
+      .animate-pop-in {
+        animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      .animated-border-box {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .animated-border-box::before {
+        content: '';
+        position: absolute;
+        top: -2px; left: -2px; right: -2px; bottom: -2px;
+        /* FIXED: Using only corporate colors (Removed #3F51B5, added #331C9D) */
+        background: linear-gradient(45deg, #CF0072, #FFD100, #64FFDA, #331C9D, #CF0072);
+        background-size: 400% 400%;
+        z-index: -1;
+        border-radius: 18px; /* Slightly larger than parent */
+        animation: gradientBorder 3s ease infinite;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .animated-border-box:hover::before {
+        opacity: 1;
+      }
+
+      /* Hide scrollbar for cleaner look */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "vite": "https://esm.sh/vite@^7.2.7",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "@keystatic/core": "https://esm.sh/@keystatic/core@^0.5.48"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
